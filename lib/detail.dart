@@ -26,7 +26,7 @@ class _MyDetailPageState extends State<MyDetailPage> {
         appBar: AppBar(
           title: Text(superHero.name),
           leading: GestureDetector(
-              child: Icon(Icons.arrow_back,),
+              child: Icon(Icons.arrow_back_ios,),
                 onTap: (){
                 Navigator.pop(context);
         },

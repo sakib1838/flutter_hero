@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hero/detail.dart';
+import 'package:flutter_hero/radial.dart';
+import 'dart:math';
 
 void main() {
   runApp(MyApp());
@@ -15,11 +17,70 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Hero Animation'),
         ),
+        body: Animations(),
+      ),
+    );
+  }
+}
+
+class Animations extends StatelessWidget {
+  const Animations({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        Card(
+          margin: EdgeInsets.all(16.0),
+          child: ListTile(
+            title: Text('Hero Standard Animation'),
+            leading: Icon(Icons.animation),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>HeroList()));
+            },
+          ),
+        ),
+
+        Card(
+          margin: EdgeInsets.all(16.0),
+          child: ListTile(
+            title: Text('Hero Rounded Animation'),
+            leading: Icon(Icons.animation),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>RadialExpansionDemo()));
+            },
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class HeroList extends StatelessWidget {
+  const HeroList({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Hero List'),
+          leading: GestureDetector(
+            child: Icon(Icons.arrow_back_ios),
+            onTap: (){
+              Navigator.pop(context);
+            },
+          ),
+        ),
         body: HeroItem(),
       ),
     );
   }
 }
+
+
 
 class HeroItem extends StatefulWidget {
   const HeroItem({Key key}) : super(key: key);
@@ -90,5 +151,8 @@ class _HeroItemState extends State<HeroItem> {
     );
   }
 }
+
+
+
 
 
